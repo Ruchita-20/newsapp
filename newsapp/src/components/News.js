@@ -48,7 +48,9 @@ export default class News extends Component {
         <div className='row'>
           {!this.state.loading && this.state.articles.map((element)=>{
             return <div className='col-md-4 mb-4' key={element.url}>
-            <NewsItem title={element.title?element.title.slice(0,71):""} description={element.description?element.description.slice(0,95):""}  urlToImage={element.urlToImage?element.urlToImage:"https://ichef.bbci.co.uk/news/1024/branded_news/4193/production/_132778761_gettyimages-1658892930.jpg"} url={element.url}/>
+            <NewsItem title={element.title?element.title.slice(0,71):""} description={element.description?element.description.slice(0,95):""}  
+            urlToImage={element.urlToImage?element.urlToImage:"https://ichef.bbci.co.uk/news/1024/branded_news/4193/production/_132778761_gettyimages-1658892930.jpg"} 
+            url={element.url} author={element.author?element.author:"Unknown"} date={new Date(element.publishedAt).toDateString()} name={element.source.name.slice(0,16)}/>
           </div>
           })}
         </div>
