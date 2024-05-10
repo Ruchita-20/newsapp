@@ -12,7 +12,7 @@ export default class News extends Component {
   }
   }
   async componentDidMount(){
-    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=aa88b390c00e4981b26aae14bd4c4516&page=1&pageSize=${this.props.pageSize}`;
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=aa88b390c00e4981b26aae14bd4c4516&page=1&pageSize=${this.props.pageSize}`;
     this.setState({loading:true});
     let data=await fetch(url); 
     let parsedata=await data.json();
@@ -21,7 +21,7 @@ export default class News extends Component {
       totalResults:parsedata.totalResults});
   }
   previous = async()=>{
-    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=aa88b390c00e4981b26aae14bd4c4516&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=aa88b390c00e4981b26aae14bd4c4516&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
     this.setState({loading:true});
     let data=await fetch(url); 
     let parsedata=await data.json();
@@ -31,7 +31,7 @@ export default class News extends Component {
       articles:parsedata.articles});
   }
   next = async()=>{
-    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=aa88b390c00e4981b26aae14bd4c4516&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=aa88b390c00e4981b26aae14bd4c4516&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
     this.setState({loading:true});
     let data=await fetch(url); 
     let parsedata=await data.json();
@@ -42,7 +42,7 @@ export default class News extends Component {
   }
   render(props) {
     return (
-      <div className='container my-3'>
+      <div className='container my-3 mx-auto'>
       <h1 className='text-center'>Get Recent News</h1>
       {this.state.loading && <Spinner/>}
         <div className='row'>
